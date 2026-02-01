@@ -1,0 +1,14 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Lazar HI20",
+        "description": "Zaloguj się do konta Lazar (hkslazar.net)",
+        "data": {
+          "username": "Login",
+          "password": "Hasło"
+        }
+      }
+    }
+  }
+}

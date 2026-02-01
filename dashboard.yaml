@@ -1,0 +1,146 @@
+title: Pompa Ciepła Lazar
+views:
+  - title: Status
+    path: default_view
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                entity: switch.pompa_ciepla_lazar_pompa_wlacz_wylacz
+                name: Zasilanie
+                icon: mdi:power
+                color: red
+                vertical: false
+                features_position: bottom
+              - type: tile
+                entity: select.pompa_ciepla_lazar_tryb_pracy
+                name: Tryb
+                icon: mdi:hvac
+                vertical: false
+                features_position: bottom
+              - type: tile
+                entity: binary_sensor.pompa_ciepla_lazar_alarm
+                name: Status
+                state_color: true
+          - type: entities
+            title: Temperatury
+            show_header_toggle: false
+            entities:
+              - entity: sensor.pompa_ciepla_lazar_temperatura_zewnetrzna
+                name: Zewnętrzna
+                icon: mdi:thermometer
+              - entity: sensor.pompa_ciepla_lazar_temperatura_cwu_2
+                name: CWU (Woda użytkowa)
+                icon: mdi:water-thermometer
+              - entity: sensor.pompa_ciepla_lazar_temperatura_powrotu_co_2
+                name: Powrót CO
+                icon: mdi:thermometer-water
+              - entity: sensor.pompa_ciepla_lazar_temperatura_powietrza_wylot_2
+                name: Wylot Powietrza
+                icon: mdi:weather-windy
+              - entity: sensor.pompa_ciepla_lazar_temperatura_pokojowa_odczyt
+                name: Pokojowa (odczyt z termostatu)
+                icon: mdi:home-thermometer
+          - type: entities
+            title: Ustawienia (Edycja)
+            show_header_toggle: false
+            entities:
+              - type: section
+                label: Krzywa Grzewcza
+              - entity: number.pompa_ciepla_lazar_krzywa_15_2
+                name: Punkt dla +15°C
+              - entity: number.pompa_ciepla_lazar_krzywa_0_2
+                name: Punkt dla 0°C
+              - entity: number.pompa_ciepla_lazar_krzywa_10_2
+                name: Punkt dla -10°C
+              - entity: number.pompa_ciepla_lazar_krzywa_20_2
+                name: Punkt dla -20°C
+              - type: section
+                label: Ciepła Woda (CWU)
+              - entity: number.pompa_ciepla_lazar_cwu_eco
+                name: Temperatura ECO
+              - entity: number.pompa_ciepla_lazar_cwu_komfort
+                name: Temperatura Komfort
+          - type: grid
+            title: Praca Urządzenia
+            columns: 2
+            square: false
+            cards:
+              - type: tile
+                entity: sensor.pompa_ciepla_lazar_moc_sprezarki_2
+                name: Moc Sprężarki
+                icon: mdi:flash
+                vertical: false
+                features_position: bottom
+              - type: tile
+                entity: sensor.pompa_ciepla_lazar_predkosc_wentylatora_2
+                name: Wentylator
+                icon: mdi:fan
+                vertical: false
+                features_position: bottom
+              - type: tile
+                entity: sensor.pompa_ciepla_lazar_pobor_mocy_calkowity_2
+                name: Pobór Mocy (Total)
+                icon: mdi:lightning-bolt
+                vertical: false
+                features_position: bottom
+              - type: tile
+                entity: sensor.pompa_ciepla_lazar_liczba_alarmow
+                name: Licznik Alarmów
+                icon: mdi:counter
+                vertical: false
+                features_position: bottom
+          - type: entities
+            title: Hydraulika i Sensory
+            show_header_toggle: false
+            entities:
+              - type: section
+                label: Pompy i Zawory EEV
+              - entity: sensor.pompa_ciepla_lazar_pompa_obiegowa_1_2
+                name: Pompa Obiegowa 1
+              - entity: sensor.pompa_ciepla_lazar_pompa_obiegowa_2_2
+                name: Pompa Obiegowa 2
+              - entity: sensor.pompa_ciepla_lazar_pozycja_eev_chlodzenie_2
+                name: EEV (Tryb Grzania)
+              - entity: sensor.pompa_ciepla_lazar_pozycja_eev_grzanie_2
+                name: EEV (Tryb Chłodzenia)
+              - type: section
+                label: Przepływy i Zabezpieczenia
+              - entity: number.ns_tymon_temperature_correction
+                name: Przepływ CO 1
+              - entity: number.whitepola_temperature_correction
+                name: Przepływ CO 2
+              - entity: sensor.pompa_ciepla_lazar_czujnik_wycieku_2
+                name: Czujnik Wycieku
+              - entity: sensor.pompa_ciepla_lazar_temperatura_pokojowa_odczyt
+                name: Czujnik Carter (Sprężarka)
+          - type: history-graph
+            title: Wykres Pracy
+            hours_to_show: 12
+            entities:
+              - entity: sensor.pompa_ciepla_lazar_temperatura_cwu
+              - entity: sensor.pompa_ciepla_lazar_temperatura_powrotu_co
+      - type: vertical-stack
+        title: Wykresy energii
+        cards:
+          - type: history-graph
+            title: Wykres energii (dzień)
+            entities:
+              - entity: sensor.pompa_ciepla_lazar_pobor_mocy_calkowity_2
+            hours_to_show: 24
+            refresh_interval: 300
+          - type: history-graph
+            title: Wykres energii (miesiąc)
+            entities:
+              - entity: sensor.pompa_ciepla_lazar_pobor_mocy_calkowity_2
+            hours_to_show: 720
+            refresh_interval: 1800
+          - type: history-graph
+            title: Wykres energii (rok)
+            entities:
+              - entity: sensor.pompa_ciepla_lazar_pobor_mocy_calkowity_2
+            hours_to_show: 8760
+            refresh_interval: 3600

@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Lazar HI20",
+        "description": "Zaloguj się do konta Lazar (hkslazar.net)",
+        "data": {
+          "username": "Login",
+          "password": "Hasło",
+          "room_sensor": "Czujnik temperatury pokojowej (opcjonalnie)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie udało się połączyć. Sprawdź login i hasło."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Konfiguracja Lazar HI20",
+        "data": {
+          "room_sensor": "Czujnik temperatury pokojowej"
+        }
+      }
+    }
+  }
+}
