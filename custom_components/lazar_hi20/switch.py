@@ -15,19 +15,32 @@ class LazarSwitch(CoordinatorEntity, SwitchEntity):
         self.cfg = cfg
         self._attr_name = f"{DEFAULT_NAME} {cfg['name']}"
         self._attr_unique_id = f"lazar_{key}"
-        # Dodano obsługę ikony z konfiguracji
         self._attr_icon = cfg.get("icon")
+        self._optimistic_state = None  # Flaga do optymistycznego stanu
 
     @property
     def is_on(self):
+        """Zwraca stan, priorytetyzując optymistyczną wartość w trakcie odświeżania."""
+        if self._optimistic_state is not None:
+            return self._optimistic_state
         val = get_value_from_path(self.coordinator.data, self.cfg["path"])
         return val == 1
 
     async def async_turn_on(self, **kwargs):
-        await self.coordinator.set_param(self.key, 1)
+        self._optimistic_state = True
+        self.async_write_ha_state() # Natychmiastowa aktualizacja interfejsu
+        try:
+            await self.coordinator.set_param(self.key, 1)
+        finally:
+            self._optimistic_state = None # Czyszczenie flagi, gdy API zakończy lub zaktualizuje dane
 
     async def async_turn_off(self, **kwargs):
-        await self.coordinator.set_param(self.key, 0)
+        self._optimistic_state = False
+        self.async_write_ha_state()
+        try:
+            await self.coordinator.set_param(self.key, 0)
+        finally:
+            self._optimistic_state = None
 
     @property
     def device_info(self):
