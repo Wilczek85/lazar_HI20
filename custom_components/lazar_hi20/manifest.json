@@ -1,10 +1,10 @@
 {
   "domain": "lazar_hi20",
   "name": "Heatpump Lazar HI20",
-  "version": "2026.1.6",
+  "version": "2026.3.1",
   "documentation": "https://github.com/Wilczek85/lazar_HI20",
   "issue_tracker": "https://github.com/Wilczek85/lazar_HI20/issues",
   "codeowners": ["@Wilczek85"],
   "config_flow": true,
-  "iot_class": "local_push"
+  "iot_class": "cloud_polling"
 }
