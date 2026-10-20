@@ -9,6 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed
 
 from .const import DOMAIN, LOGIN_URL, DATA_URL, SET_URL, CONF_ROOM_SENSOR
+from .values import room_temperature
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -36,7 +37,7 @@ class LazarCoordinator(DataUpdateCoordinator):
         # Próba 1: Normalne pobranie (może użyć istniejącej sesji)
         try:
             return await self._fetch_and_parse()
-        except (ConfigEntryAuthFailed, aiohttp.ClientError, ValueError) as err:
+        except (ConfigEntryAuthFailed, aiohttp.ClientError, ValueError, asyncio.TimeoutError) as err:
             _LOGGER.warning("Błąd pobierania danych (próba 1), próba odnowienia sesji: %s", err)
             # Próba 2: Wymuszone logowanie i ponowne pobranie
             try:
@@ -61,21 +62,20 @@ class LazarCoordinator(DataUpdateCoordinator):
                 
             data = await resp.json()
 
-        # Logika czujnika pokojowego (bez zmian)
-        if self.room_sensor_entity:
-            state = self.hass.states.get(self.room_sensor_entity)
-            if state and state.state not in ["unknown", "unavailable"]:
-                try:
-                    room_temp = float(state.state)
-                    if "params" not in data: data["params"] = {}
-                    if "cricuits" not in data["params"]: data["params"]["cricuits"] = [{}]
-                    # Symulacja struktury dla parsera
-                    data["params"]["cricuits"][0]["troomsetheat"] = room_temp * 10
-                    data["params"]["cricuits"][0]["troomsetcool"] = room_temp * 10
-                except ValueError:
-                    pass
-        
+        if not isinstance(data, dict):
+            raise ValueError("API response must be an object")
+
         return data
+
+    @property
+    def room_temperature(self):
+        """Read the actual room sensor without modifying API setpoints."""
+        if not self.room_sensor_entity:
+            return None
+        state = self.hass.states.get(self.room_sensor_entity)
+        if state is None:
+            return None
+        return room_temperature(state.state, state.attributes.get("unit_of_measurement"))
 
     def _has_valid_cookie(self):
         for cookie in self.session.cookie_jar:

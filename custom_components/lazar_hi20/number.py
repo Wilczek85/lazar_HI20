@@ -2,6 +2,7 @@ from homeassistant.components.number import NumberEntity, NumberDeviceClass
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN, NUMBER_TYPES, DEFAULT_NAME
 from .coordinator import get_value_from_path
+from .values import numeric_value
 from homeassistant.const import EntityCategory, UnitOfTemperature
 import logging
 
@@ -35,8 +36,7 @@ class LazarNumber(CoordinatorEntity, NumberEntity):
     @property
     def native_value(self):
         raw = get_value_from_path(self.coordinator.data, self.cfg["path"])
-        if raw is None: return None
-        return raw * self.cfg.get("scale", 1)
+        return numeric_value(raw, self.cfg.get("scale", 1))
 
     async def async_set_native_value(self, value: float) -> None:
         to_send = value

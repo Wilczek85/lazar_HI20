@@ -33,7 +33,8 @@ SENSOR_TYPES = {
     "heater_flow1": {"path": "stat.heaters.flowlvl1", "name": "Poziom przepływu CO 1", "icon": "mdi:pipe-valve"},
     "heater_flow2": {"path": "stat.heaters.flowlvl2", "name": "Poziom przepływu CO 2", "icon": "mdi:pipe-valve"},
     "heater_carter": {"path": "stat.heaters.carter", "name": "Czujnik carter"},
-    "troomsetheat": {"path": "params.cricuits.0.troomsetheat", "name": "Temperatura pokojowa (odczyt)", "unit": UnitOfTemperature.CELSIUS, "class": SensorDeviceClass.TEMPERATURE},
+    "troomsetheat": {"source": "room", "name": "Temperatura pokojowa (odczyt)", "unit": UnitOfTemperature.CELSIUS, "class": SensorDeviceClass.TEMPERATURE},
+    "room_target_heat": {"path": "params.cricuits.0.troomsetheat", "scale": 0.1, "name": "Temperatura pokojowa zadana", "unit": UnitOfTemperature.CELSIUS, "class": SensorDeviceClass.TEMPERATURE},
     "alarm_count": {"path": "stat.alarmcnt", "name": "Liczba alarmów", "icon": "mdi:alert-circle-outline"},
 }
 

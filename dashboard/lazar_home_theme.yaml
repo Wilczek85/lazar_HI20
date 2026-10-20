@@ -1,0 +1,27 @@
+Lazar Home:
+  primary-color: '#FF9F0A'
+  accent-color: '#0A84FF'
+  ha-card-border-radius: 24px
+  ha-card-border-width: 0px
+  ha-card-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04)
+  primary-font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, Segoe UI,
+    sans-serif
+  modes:
+    light:
+      primary-background-color: '#F2F2F7'
+      secondary-background-color: '#E5E5EA'
+      card-background-color: '#FFFFFF'
+      ha-card-background: '#FFFFFF'
+      primary-text-color: '#1C1C1E'
+      secondary-text-color: '#636366'
+      app-header-background-color: '#F2F2F7'
+      app-header-text-color: '#1C1C1E'
+    dark:
+      primary-background-color: '#111113'
+      secondary-background-color: '#1C1C1E'
+      card-background-color: '#242426'
+      ha-card-background: '#242426'
+      primary-text-color: '#F2F2F7'
+      secondary-text-color: '#AEAEB2'
+      app-header-background-color: '#111113'
+      app-header-text-color: '#F2F2F7'

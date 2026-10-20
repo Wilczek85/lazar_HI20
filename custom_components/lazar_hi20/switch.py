@@ -32,7 +32,8 @@ class LazarSwitch(CoordinatorEntity, SwitchEntity):
         try:
             await self.coordinator.set_param(self.key, 1)
         finally:
-            self._optimistic_state = None # Czyszczenie flagi, gdy API zakończy lub zaktualizuje dane
+            self._optimistic_state = None
+            self.async_write_ha_state()
 
     async def async_turn_off(self, **kwargs):
         self._optimistic_state = False
@@ -41,6 +42,7 @@ class LazarSwitch(CoordinatorEntity, SwitchEntity):
             await self.coordinator.set_param(self.key, 0)
         finally:
             self._optimistic_state = None
+            self.async_write_ha_state()
 
     @property
     def device_info(self):

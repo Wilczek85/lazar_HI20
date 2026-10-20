@@ -1,0 +1,380 @@
+{
+  "title": "Dom · Lazar",
+  "views": [
+    {
+      "title": "Dom",
+      "path": "dom",
+      "icon": "mdi:home",
+      "type": "sections",
+      "max_columns": 3,
+      "theme": "Lazar Home",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Mój dom"
+            },
+            {
+              "type": "markdown",
+              "content": "# Dobry klimat.\nPompa ciepła · Lazar HI20"
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_odczyt",
+                  "name": "W domu",
+                  "icon": "mdi:home-thermometer",
+                  "color": "orange",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_cwu",
+                  "name": "Ciepła woda",
+                  "icon": "mdi:water-thermometer",
+                  "color": "orange",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_zewnetrzna",
+                  "name": "Na zewnątrz",
+                  "icon": "mdi:weather-partly-cloudy",
+                  "color": "blue",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "binary_sensor.pompa_ciepla_lazar_alarm",
+                  "name": "Alarmy",
+                  "icon": "mdi:shield-check",
+                  "color": "blue",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Sterowanie"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.pompa_ciepla_lazar_pompa_wlacz_wylacz",
+              "name": "Pompa ciepła",
+              "icon": "mdi:heat-pump",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "select.pompa_ciepla_lazar_tryb_pracy",
+              "name": "Tryb pracy",
+              "icon": "mdi:hvac",
+              "color": "blue",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              }
+            },
+            {
+              "type": "entities",
+              "title": "Komfort wody",
+              "show_header_toggle": false,
+              "entities": [
+                {
+                  "entity": "number.pompa_ciepla_lazar_cwu_eco",
+                  "name": "CWU · Eco"
+                },
+                {
+                  "entity": "number.pompa_ciepla_lazar_cwu_komfort",
+                  "name": "CWU · Komfort"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_zadana",
+              "name": "Zadana pokojowa · odczyt",
+              "icon": "mdi:thermostat",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Dzisiaj"
+            },
+            {
+              "type": "history-graph",
+              "title": "Temperatury · 24 godziny",
+              "hours_to_show": 24,
+              "entities": [
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_odczyt",
+                  "name": "Dom"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_cwu",
+                  "name": "CWU"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_zewnetrzna",
+                  "name": "Zewnętrzna"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_pobor_mocy_calkowity",
+                  "name": "Moc całkowita",
+                  "icon": "mdi:lightning-bolt",
+                  "color": "amber",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_predkosc_wentylatora",
+                  "name": "Wentylator",
+                  "icon": "mdi:fan",
+                  "color": "teal",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pompa",
+      "path": "pompa",
+      "icon": "mdi:heat-pump",
+      "type": "sections",
+      "max_columns": 3,
+      "theme": "Lazar Home",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Obieg i sprężarka"
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_powrotu_co",
+                  "name": "Powrót CO",
+                  "icon": "mdi:thermometer-water",
+                  "color": "orange",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_powietrza_wylot",
+                  "name": "Powietrze · wylot",
+                  "icon": "mdi:weather-windy",
+                  "color": "blue",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.pompa_ciepla_lazar_moc_sprezarki",
+                  "name": "Moc sprężarki",
+                  "icon": "mdi:flash",
+                  "color": "amber",
+                  "vertical": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "icon_tap_action": {
+                    "action": "more-info"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "history-graph",
+              "title": "Moc · 24 godziny (W)",
+              "hours_to_show": 24,
+              "entities": [
+                "sensor.pompa_ciepla_lazar_pobor_mocy_calkowity",
+                "sensor.pompa_ciepla_lazar_moc_sprezarki"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Diagnostyka"
+            },
+            {
+              "type": "entities",
+              "show_header_toggle": false,
+              "entities": [
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_pompa_obiegowa_1",
+                  "name": "Pompa obiegowa 1"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_pompa_obiegowa_2",
+                  "name": "Pompa obiegowa 2"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_pozycja_eev_grzanie",
+                  "name": "EEV · grzanie"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_pozycja_eev_chlodzenie",
+                  "name": "EEV · chłodzenie"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_poziom_przeplywu_co_1",
+                  "name": "Przepływ CO 1"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_poziom_przeplywu_co_2",
+                  "name": "Przepływ CO 2"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_czujnik_wycieku",
+                  "name": "Czujnik wycieku"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_czujnik_carter",
+                  "name": "Carter"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_liczba_alarmow",
+                  "name": "Liczba alarmów"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Krzywa grzewcza"
+            },
+            {
+              "type": "entities",
+              "title": "Nastawy obiegu CO",
+              "show_header_toggle": false,
+              "entities": [
+                {
+                  "entity": "number.pompa_ciepla_lazar_krzywa_15",
+                  "name": "Punkt +15°C"
+                },
+                {
+                  "entity": "number.pompa_ciepla_lazar_krzywa_0",
+                  "name": "Punkt 0°C"
+                },
+                {
+                  "entity": "number.pompa_ciepla_lazar_krzywa_10",
+                  "name": "Punkt −10°C"
+                },
+                {
+                  "entity": "number.pompa_ciepla_lazar_krzywa_20",
+                  "name": "Punkt −20°C"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
