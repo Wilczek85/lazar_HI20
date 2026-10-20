@@ -27,8 +27,10 @@ class LazarConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             try:
                 # Temporary coordinator for validation
                 coord = LazarCoordinator(self.hass, user_input)
-                await coord._login()
-                await coord.close()
+                try:
+                    await coord._login()
+                finally:
+                    await coord.close()
                 
                 return self.async_create_entry(
                     title=f"Lazar ({user_input['username']})",
@@ -60,7 +62,7 @@ class LazarOptionsFlowHandler(config_entries.OptionsFlow):
         """Zarządzaj opcjami."""
         if user_input is not None:
             # Zapisz nowe opcje
-            return self.async_create_entry(title="", data=user_input)
+            return self.async_create_entry(title="", data={CONF_ROOM_SENSOR: user_input.get(CONF_ROOM_SENSOR)})
 
         # Pobierz aktualnie ustawiony czujnik (z opcji lub z konfiguracji początkowej)
         # Używamy tutaj self.entry zamiast self.config_entry

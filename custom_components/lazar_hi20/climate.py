@@ -4,6 +4,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.const import UnitOfTemperature, ATTR_TEMPERATURE
 from .const import DOMAIN, DEFAULT_NAME
 from .coordinator import get_value_from_path
+from .values import numeric_value
 
 async def async_setup_entry(hass, entry, async_add_entities):
     # Przekazujemy koordynatora do encji
@@ -36,15 +37,14 @@ class LazarClimate(CoordinatorEntity, ClimateEntity):
 
     @property
     def current_temperature(self):
-        """Zwraca aktualną temperaturę (np. powrót CO). Możesz to zmienić na inny odpowiedni czujnik."""
-        val = get_value_from_path(self.coordinator.data, "stat.temps.ret")
-        return val * 0.1 if val is not None else None
+        """Actual room measurement; never substitute the CO return temperature."""
+        return self.coordinator.room_temperature
 
     @property
     def target_temperature(self):
         """Zwraca zadaną temperaturę pokojową z obiegu pierwszego."""
         val = get_value_from_path(self.coordinator.data, "params.cricuits.0.troomsetheat")
-        return val * 0.1 if val is not None else None
+        return numeric_value(val, 0.1)
 
     async def async_set_temperature(self, **kwargs):
         """Ustawienie temperatury docelowej."""
