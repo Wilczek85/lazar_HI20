@@ -1,3 +1,5 @@
+> Nowy wariant 2026.3.2 z tapetą: [Lazar Home Glass — instrukcja](dashboard/glass/START_TUTAJ.md). Poniższa instrukcja opisuje dotychczasowy panel.
+
 # Lazar HI20 — poprawka temperatury i dashboard Lazar Home
 
 Pakiet opracowany na podstawie commita `2e738d9004e98ff1983ce40f4da9a569558eecb1`.

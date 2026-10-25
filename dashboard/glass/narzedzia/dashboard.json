@@ -1,0 +1,588 @@
+{
+  "title": "Lazar Home",
+  "views": [
+    {
+      "title": "Klimat",
+      "path": "klimat",
+      "type": "sections",
+      "max_columns": 3,
+      "theme": "Lazar Glass",
+      "background": {
+        "image": "/local/lazar_home/tapeta.jpg",
+        "opacity": 100,
+        "size": "cover",
+        "alignment": "center",
+        "repeat": "no-repeat",
+        "attachment": "fixed"
+      },
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Mój dom · Lazar HI20"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_odczyt",
+              "name": "W domu",
+              "icon": "mdi:home-thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_temperatura_zewnetrzna",
+              "name": "Na zewnątrz",
+              "icon": "mdi:weather-partly-cloudy",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_temperatura_cwu",
+              "name": "Ciepła woda",
+              "icon": "mdi:water-thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_temperatura_powrotu_co",
+              "name": "Powrót CO",
+              "icon": "mdi:thermometer-water",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_zadana",
+              "name": "Zadana pokojowa · odczyt",
+              "icon": "mdi:thermostat",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.pompa_ciepla_lazar_alarm",
+              "name": "Alarmy",
+              "icon": "mdi:alert-circle-outline",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Pompa i ciepła woda"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.pompa_ciepla_lazar_pompa_wlacz_wylacz",
+              "name": "Pompa · włącz / wyłącz",
+              "icon": "mdi:heat-pump",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "toggle"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "select.pompa_ciepla_lazar_tryb_pracy",
+              "name": "Wybrany tryb",
+              "icon": "mdi:hvac",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "select-options",
+                  "style": "dropdown"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.pompa_ciepla_lazar_cwu_eco",
+              "name": "CWU · Eco",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.pompa_ciepla_lazar_cwu_komfort",
+              "name": "CWU · Komfort",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Krzywa grzewcza"
+            },
+            {
+              "type": "tile",
+              "entity": "number.pompa_ciepla_lazar_krzywa_20",
+              "name": "Przy −20°C",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.pompa_ciepla_lazar_krzywa_10",
+              "name": "Przy −10°C",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.pompa_ciepla_lazar_krzywa_0",
+              "name": "Przy 0°C",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.pompa_ciepla_lazar_krzywa_15",
+              "name": "Przy +15°C",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              },
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ]
+            },
+            {
+              "type": "markdown",
+              "content": "**Nastawy sterownika**\n\nWybrany tryb nie oznacza aktywnej pracy sprężarki. Temperatura pokojowa pochodzi z czujnika wskazanego w integracji.",
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Historia",
+      "path": "historia",
+      "type": "sections",
+      "max_columns": 3,
+      "theme": "Lazar Glass",
+      "background": {
+        "image": "/local/lazar_home/tapeta.jpg",
+        "opacity": 100,
+        "size": "cover",
+        "alignment": "center",
+        "repeat": "no-repeat",
+        "attachment": "fixed"
+      },
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Temperatury · 24 godziny"
+            },
+            {
+              "type": "history-graph",
+              "hours_to_show": 24,
+              "entities": [
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_odczyt",
+                  "name": "W domu"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_pokojowa_zadana",
+                  "name": "Zadana pokojowa"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_cwu",
+                  "name": "CWU"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_powrotu_co",
+                  "name": "Powrót CO"
+                },
+                {
+                  "entity": "sensor.pompa_ciepla_lazar_temperatura_zewnetrzna",
+                  "name": "Na zewnątrz"
+                }
+              ],
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Stan i tryb · 24 godziny"
+            },
+            {
+              "type": "history-graph",
+              "hours_to_show": 24,
+              "entities": [
+                "switch.pompa_ciepla_lazar_pompa_wlacz_wylacz",
+                "select.pompa_ciepla_lazar_tryb_pracy",
+                "binary_sensor.pompa_ciepla_lazar_alarm"
+              ],
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pompa",
+      "path": "pompa",
+      "type": "sections",
+      "max_columns": 3,
+      "theme": "Lazar Glass",
+      "background": {
+        "image": "/local/lazar_home/tapeta.jpg",
+        "opacity": 100,
+        "size": "cover",
+        "alignment": "center",
+        "repeat": "no-repeat",
+        "attachment": "fixed"
+      },
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Diagnostyka"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_liczba_alarmow",
+              "name": "Liczba alarmów",
+              "icon": "mdi:alert",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_predkosc_wentylatora",
+              "name": "Wentylator",
+              "icon": "mdi:fan",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_pozycja_eev_grzanie",
+              "name": "EEV · grzanie",
+              "icon": "mdi:gauge",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_pozycja_eev_chlodzenie",
+              "name": "EEV · chłodzenie",
+              "icon": "mdi:gauge",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Odczyty sterownika"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_pompa_obiegowa_1",
+              "name": "Pompa obiegowa 1",
+              "icon": "mdi:pump",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_pompa_obiegowa_2",
+              "name": "Pompa obiegowa 2",
+              "icon": "mdi:pump",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_poziom_przeplywu_co_1",
+              "name": "Poziom przepływu CO 1",
+              "icon": "mdi:pump",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.pompa_ciepla_lazar_poziom_przeplywu_co_2",
+              "name": "Poziom przepływu CO 2",
+              "icon": "mdi:pump",
+              "color": "orange",
+              "vertical": true,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "icon_tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.16); }"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
