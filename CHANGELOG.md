@@ -1,5 +1,16 @@
 # Historia zmian
 
+## 2026.10.3 — 2026-10-25
+
+- Baza: gałąź 2026.10.2, commit c2463a6.
+- Ujednolicono numer manifestu z wydaniem 2026.10.3.
+- Przeniesiono hacs.json do katalogu głównego i usunięto nieobsługiwane pola.
+- Dołączono panel Glass pod custom_components/lazar_hi20/panel_glass, aby był pobierany przez HACS.
+- Dodano instrukcję aktualizacji HACS i jednorazowej aktywacji panelu.
+- Dodano workflow publikujący tylko stabilne wydanie v2026.10.3 po push na gałąź 2026.10.2; używa tokenu repozytorium, bez zewnętrznych akcji.
+- Zachowano działanie integracji oraz istniejące encje. Aktualizacja nie nadpisuje aktywnego panelu.
+
+
 ## 2026.3.2 — 2026-10-25
 
 ### Dodano

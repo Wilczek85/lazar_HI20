@@ -1,7 +1,7 @@
 {
   "domain": "lazar_hi20",
   "name": "Heatpump Lazar HI20",
-  "version": "2026.3.2",
+  "version": "2026.10.3",
   "documentation": "https://github.com/Wilczek85/lazar_HI20",
   "issue_tracker": "https://github.com/Wilczek85/lazar_HI20/issues",
   "codeowners": [

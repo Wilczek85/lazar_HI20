@@ -1,0 +1,78 @@
+name: Publish Lazar HI20 2026.10.3
+on:
+  push:
+    branches: ['2026.10.2']
+    paths:
+      - custom_components/lazar_hi20/manifest.json
+      - .github/workflows/release-2026.10.3.yml
+permissions:
+  contents: write
+concurrency:
+  group: release-2026.10.3
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify manifest and publish stable release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import base64
+          import json
+          import os
+          import urllib.error
+          import urllib.request
+
+          repo = os.environ['GITHUB_REPOSITORY']
+          sha = os.environ['GITHUB_SHA']
+          api = os.environ['GITHUB_API_URL'] + '/repos/' + repo
+          headers = {
+              'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+          }
+          def request(path, payload=None):
+              body = None if payload is None else json.dumps(payload).encode()
+              req = urllib.request.Request(api + path, data=body, headers=headers)
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  return json.load(response)
+
+          item = request('/contents/custom_components/lazar_hi20/manifest.json?ref=' + sha)
+          manifest = json.loads(base64.b64decode(item['content']))
+          if manifest['version'] != '2026.10.3':
+              raise SystemExit('This workflow only publishes 2026.10.3')
+          request('/contents/hacs.json?ref=' + sha)
+          tag = 'v2026.10.3'
+          try:
+              existing = request('/releases/tags/' + tag)
+          except urllib.error.HTTPError as error:
+              if error.code != 404:
+                  raise
+          else:
+              if existing.get('draft') or existing.get('prerelease'):
+                  raise SystemExit('Existing release is not stable; review it manually')
+              print('Release already exists: ' + existing['html_url'])
+              raise SystemExit(0)
+          release = request('/releases', {
+              'tag_name': tag,
+              'target_commitish': sha,
+              'name': 'Lazar HI20 2026.10.3 — HACS + Glass',
+              'draft': False,
+              'prerelease': False,
+              'make_latest': 'true',
+              'body': (
+                  'Aktualizacja oparta na gałęzi 2026.10.2.\n\n'
+                  '- Poprawiona lokalizacja hacs.json i wersja manifestu.\n'
+                  '- Panel Glass z tapetą pobierany razem z integracją.\n'
+                  '- Bez zmian logiki sterowania pompą.\n\n'
+                  'W HACS odśwież repozytorium i pobierz v2026.10.3, następnie uruchom HA ponownie. '
+                  'Pliki panelu: /config/custom_components/lazar_hi20/panel_glass/. '
+                  'Panel wymaga jednorazowej konfiguracji zgodnie z INSTALACJA_HACS.md.\n\n'
+                  'Sprawdzono lokalne testy regresji i składnię plików. '
+                  'Nie testowano na fizycznej pompie ani w działającej instancji HA.'
+              ),
+          })
+          print(release['html_url'])

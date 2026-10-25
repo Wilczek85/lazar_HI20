@@ -1,0 +1,12 @@
+# Scal z istniejącymi sekcjami. Nie zastępuj całego configuration.yaml.
+frontend:
+  themes: !include_dir_merge_named themes
+
+lovelace:
+  dashboards:
+    lazar-home:
+      mode: yaml
+      title: Lazar Home
+      icon: mdi:heat-pump
+      show_in_sidebar: true
+      filename: dashboards/lazar_home.yaml
