@@ -1,0 +1,23 @@
+Lazar Glass:
+  primary-color: '#FF9F0A'
+  accent-color: '#FF9F0A'
+  primary-text-color: '#FFFFFF'
+  secondary-text-color: '#E0E4EC'
+  primary-background-color: '#111B2B'
+  secondary-background-color: '#202D3C'
+  card-background-color: rgba(25, 35, 49, 0.80)
+  ha-card-background: rgba(25, 35, 49, 0.80)
+  ha-card-border-radius: 24px
+  ha-card-border-width: 1px
+  ha-card-border-color: rgba(255,255,255,0.16)
+  ha-card-box-shadow: 0 8px 28px rgba(0,0,0,0.18)
+  app-header-background-color: rgba(17,27,43,0.92)
+  app-header-text-color: '#FFFFFF'
+  primary-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif
+  state-icon-color: '#D9E0EB'
+  divider-color: rgba(255,255,255,0.15)
+  input-fill-color: rgba(255,255,255,0.08)
+  input-ink-color: '#FFFFFF'
+  input-label-ink-color: '#FFFFFF'
+  lovelace-background: center / cover no-repeat url("/local/lazar_home/tapeta.jpg")
+    fixed

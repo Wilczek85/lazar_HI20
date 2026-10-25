@@ -1,23 +1,20 @@
 # Lazar HI20 — Home Assistant
 
-Wersja **2026.3.2**: panel **Lazar Home Glass** z tapetą, półprzezroczystym motywem i natywnymi kontrolkami Home Assistant.
+Wersja **2026.10.3**, oparta na gałęzi `2026.10.2`: aktualizacja przez HACS i panel Lazar Home Glass dołączony do integracji.
 
-## Panel Glass
-
-- [Pobierz paczkę panelu 2026.3.2](releases/Lazar_Home_Glass_2026.3.2.zip?raw=true)
-- [Instrukcja instalacji panelu](dashboard/glass/START_TUTAJ.md)
-- [Pliki panelu, motywu i tapety](dashboard/glass/config)
+- [Instalacja i aktualizacja przez HACS](INSTALACJA_HACS.md)
+- [Panel Glass — konfiguracja](custom_components/lazar_hi20/panel_glass/START_TUTAJ.md)
 - [Historia zmian](CHANGELOG.md)
+- [Ograniczenia integracji](AUDYT_PL.md)
 
-Panel zawiera zakładki Klimat, Historia i Pompa, nastawy CWU Eco/Komfort oraz cztery punkty krzywej grzewczej. Korzysta z istniejących encji integracji. Nastawa pokojowa pozostaje tylko do odczytu. Nie uruchamia platformy climate ani nie zmienia protokołu sterowania pompą. Podstawowe działanie nie wymaga kart HACS; card-mod jest opcjonalnym dodatkiem do efektu szkła.
+W HACS wybierz wydanie **v2026.10.3** i po pobraniu uruchom ponownie HA. Jeśli używasz repozytorium jako niestandardowego, jego URL to `https://github.com/Wilczek85/lazar_HI20`, kategoria: Integracja.
 
-**Aktualizacja integracji sama nie instaluje panelu.** Skopiuj osobno pliki z paczki zgodnie z instrukcją. Paczka ZIP zawiera dashboard, a nie komponent custom_components.
+Panel jest pobierany do `/config/custom_components/lazar_hi20/panel_glass/`. Jego jednorazowa konfiguracja wymaga skopiowania tapety, motywu i YAML według instrukcji. Aktualizacja nie nadpisuje aktywnego dashboardu ani istniejącej konfiguracji HA.
 
-## Integracja i dotychczasowy panel
+Panel ma zakładki Klimat, Historia i Pompa, CWU Eco/Komfort oraz cztery punkty krzywej grzewczej. Pokojowa nastawa pozostaje tylko do odczytu. Standardowe karty nie wymagają dodatków HACS; card-mod jest opcjonalny.
 
-- [Instalacja integracji i dashboard Lazar Home](INSTALACJA_PL.md)
-- [Audyt, zakres poprawek i ograniczenia](AUDYT_PL.md)
+Integracja komunikuje się z chmurą hkslazar.net przez login i hasło. Konfiguracja hosta LAN przez YAML nie jest obsługiwana. Nie zmieniono logiki API ani nie aktywowano platformy climate.
 
-Integrację konfiguruje się przez Ustawienia → Urządzenia i usługi, za pomocą loginu i hasła serwisu Lazar. Komunikacja odbywa się z chmurą hkslazar.net. Ta wersja nie obsługuje konfiguracji hosta LAN przez YAML.
+Testy lokalne obejmują odczyty temperatur, pliki konfiguracji i paczkę panelu. Nie testowano na fizycznej pompie ani w działającej instancji HA.
 
-Sprawdzono konfigurację plików i mapowanie encji. Panel Glass nie był testowany w działającej instancji Home Assistant ani na fizycznej pompie. Interpretacja trybów, potwierdzenie zapisu oraz obsługa brakujących danych alarmowych zachowują ograniczenia opisane w audycie.
+Dotychczasowa instrukcja: [INSTALACJA_PL.md](INSTALACJA_PL.md).
